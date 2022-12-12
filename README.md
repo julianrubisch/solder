@@ -4,6 +4,10 @@ Short description and motivation.
 ## Usage
 How to use my plugin.
 
+### Persistence
+
+Uses the active Rails cache store, possibly more adapters to come
+
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -20,6 +24,17 @@ Or install it yourself as:
 ```bash
 $ gem install solder
 ```
+
+## Dependencies
+
+### Ruby
+- Rails
+
+### Javascript
+
+- Stimulus
+- @rails/request.js
+- Turbo
 
 ## Contributing
 Contribution directions go here.
