@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Julian Rubisch"]
   spec.email = ["julian@julianrubisch.at"]
   spec.homepage = "https://github.com/julianrubisch/solder"
-  spec.summary = "Initial commit"
-  spec.description = "Initial commit"
+  spec.summary = "Simplistic UI State Management for Rails Apps using Hotwire and Caching"
+  spec.description = "Simplistic UI State Management for Rails Apps using Hotwire and Caching"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "stimulus-rails", ">= 1.1"
   spec.add_dependency "turbo-rails", ">= 1.1"
 
-  spec.add_development_dependency "standard"
+  spec.add_development_dependency "solargraph-rails"
   spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "standard"
 end

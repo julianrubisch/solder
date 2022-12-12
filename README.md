@@ -1,4 +1,4 @@
-# Solder
+# 🧑‍🏭 Solder
 Short description and motivation.
 
 ## Usage
