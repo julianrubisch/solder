@@ -14,5 +14,9 @@ module Solder
         exit false
       end
     end
+
+    config.after_initialize do
+      ::ApplicationHelper.include helpers
+    end
   end
 end
