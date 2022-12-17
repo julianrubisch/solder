@@ -1,6 +1,13 @@
 module Solder
+  def self.config
+    Rails.application.config.solder
+  end
+
   class Engine < ::Rails::Engine
     isolate_namespace Solder
+
+    config.solder = ActiveSupport::OrderedOptions.new
+    config.solder[:around_action] = ->(_controller, action) { action.call }
 
     initializer "solder.check_caching" do |app|
       unless app.config.action_controller.perform_caching && app.config.cache_store != :null_store

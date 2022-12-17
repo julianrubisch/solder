@@ -1,6 +1,7 @@
 module Solder
   class UiStateController < ApplicationController
     before_action :set_ui_state, only: :show
+    around_action Solder.config[:around_action]
 
     def show
       render json: @ui_state.to_json
