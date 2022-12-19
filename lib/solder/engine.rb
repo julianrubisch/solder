@@ -22,8 +22,11 @@ module Solder
       end
     end
 
-    config.after_initialize do
-      ::ApplicationHelper.include helpers
+    initializer "solder.helpers" do
+      ActiveSupport.on_load(:action_controller_base) do
+        include Solder::ApplicationHelper
+        helper Solder::Engine.helpers
+      end
     end
   end
 end
