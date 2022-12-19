@@ -8,7 +8,8 @@ module Solder
     end
 
     def update
-      Rails.cache.write "solder/#{params[:key]}", JSON.parse(params[:attributes])
+      Rails.cache.write "solder/#{ui_state_params[:key]}", parsed_attributes
+      records_to_touch.map(&:touch)
 
       head :ok
     end
@@ -20,7 +21,15 @@ module Solder
     end
 
     def set_ui_state
-      @ui_state = Rails.cache.read "solder/#{params[:key]}"
+      @ui_state = Rails.cache.read "solder/#{ui_state_params[:key]}"
+    end
+
+    def records_to_touch
+      GlobalID::Locator.locate_many_signed parsed_attributes["data-solder-touch"]&.split(":") || []
+    end
+
+    def parsed_attributes
+      JSON.parse(ui_state_params[:attributes])
     end
   end
 end
