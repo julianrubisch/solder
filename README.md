@@ -1,5 +1,9 @@
 # 🧑‍🏭 Solder
-Short description and motivation.
+Persist and restore ephemeral attributes of HTML elements using the Rails cache store and StimulusJS
+
+![A Cyborg Hand Soldering, Steampunk Style](https://user-images.githubusercontent.com/4352208/208506264-db5abac6-7d33-4504-9c0d-2d5f8c26994b.png)
+
+_Image: [openjourney](https://replicate.com/prompthero/openjourney), prompt: mdjrny-v4 style cyborg soldering a piece of code onto a web application user interface, 8k, steampunk_
 
 ## Usage
 How to use my plugin.
