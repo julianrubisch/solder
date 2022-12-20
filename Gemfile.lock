@@ -107,6 +107,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.16.3)
+    mocha (2.0.2)
+      ruby2_keywords (>= 0.0.5)
     net-imap (0.3.2)
       date
       net-protocol
@@ -174,6 +176,7 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     solargraph (0.47.2)
       backport (~> 1.2)
       benchmark
@@ -224,6 +227,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  mocha
   solargraph-rails
   solder!
   sprockets-rails

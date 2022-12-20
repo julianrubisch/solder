@@ -1,21 +1,21 @@
 module Solder
   module ApplicationHelper
-    def solder_onto(name, touch: [], &block)
+    def solder_onto(name, touch: [], attribute_safelist: ["class"], &block)
       soldered_html = capture(&block).to_s.strip
       fragment = Nokogiri::HTML.fragment(soldered_html)
 
       first_fragment_child = fragment.first_element_child
 
-      # add stimulus controller and create unique key
-      first_fragment_child["data-controller"] = "#{first_fragment_child["data-controller"]} solder".strip
-      first_fragment_child["data-solder-key-value"] = solder_key(name)
-
       # rehydrate
       ui_state = Rails.cache.read "solder/#{solder_key(name)}"
 
-      ui_state&.each do |attribute_name, value|
+      ui_state&.select { attribute_safelist.include?(_1) }&.each do |attribute_name, value|
         first_fragment_child[attribute_name] = sanitize value
       end
+
+      # add stimulus controller and create unique key
+      first_fragment_child["data-controller"] = "#{first_fragment_child["data-controller"]} solder".strip
+      first_fragment_child["data-solder-key-value"] = solder_key(name)
 
       first_fragment_child["data-solder-touch"] ||= Array(touch).map(&:to_sgid).map(&:to_s).join(":")
 
