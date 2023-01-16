@@ -10,7 +10,7 @@ module Solder
       ui_state = Rails.cache.read "solder/#{solder_key(name)}"
 
       ui_state&.select { attribute_safelist.include?(_1) }&.each do |attribute_name, value|
-        first_fragment_child[attribute_name] = sanitize value
+        first_fragment_child[attribute_name] = sanitize(value, tags: [])
       end
 
       # add stimulus controller and create unique key
