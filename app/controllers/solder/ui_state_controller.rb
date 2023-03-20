@@ -1,5 +1,7 @@
 module Solder
   class UiStateController < ApplicationController
+    include ActionView::Helpers::SanitizeHelper
+
     before_action :set_ui_state, only: :show
     around_action Solder.config[:around_action]
 
@@ -29,7 +31,7 @@ module Solder
     end
 
     def parsed_attributes
-      JSON.parse(ui_state_params[:attributes])
+      JSON.parse(ui_state_params[:attributes]).deep_transform_values { sanitize(_1) }
     end
   end
 end
