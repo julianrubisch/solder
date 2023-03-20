@@ -11,6 +11,7 @@ module Solder
 
     initializer "solder.check_caching" do |app|
       next if called_by_installer?
+      next if called_by_generator?
 
       unless app.config.action_controller.perform_caching && app.config.cache_store != :null_store
         puts <<~WARN
@@ -37,6 +38,10 @@ module Solder
       Rake.application.top_level_tasks.include? "app:template"
     rescue
       false
+    end
+
+    def called_by_generator?
+      ARGV.any? { _1.include? "solder:" }
     end
   end
 end
