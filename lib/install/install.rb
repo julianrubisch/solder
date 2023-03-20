@@ -30,5 +30,6 @@ else
 end
 
 # mount engine
+route 'mount Solder::Engine, at: "/solder"'
 
 # copy initializer template
