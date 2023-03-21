@@ -33,3 +33,4 @@ end
 route 'mount Solder::Engine, at: "/solder"'
 
 # copy initializer template
+generate "solder:initializer" if yes?("Do you want to install the solder initializer template?")

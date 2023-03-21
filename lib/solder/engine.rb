@@ -1,6 +1,12 @@
 module Solder
-  def self.config
-    Rails.application.config.solder
+  class << self
+    def config
+      Rails.application.config.solder
+    end
+
+    def configure
+      yield config
+    end
   end
 
   class Engine < ::Rails::Engine
