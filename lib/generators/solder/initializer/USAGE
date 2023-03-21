@@ -1,0 +1,8 @@
+Description:
+    Copies the Solder configuration template to config/initializers
+
+Example:
+    bin/rails generate solder:initializer
+
+    This will create:
+        config/initializers/solder.rb

@@ -1,0 +1,8 @@
+Description:
+    Copies the solder stimulus controller to app/javascript/controllers
+
+Example:
+    bin/rails generate solder:stimulus
+
+    This will create:
+        app/javascript/controllers/solder_controller.js

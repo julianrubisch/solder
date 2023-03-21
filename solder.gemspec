@@ -18,7 +18,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "nokogiri"
   spec.add_dependency "rails", ">= 7.0.4"
-  spec.add_dependency "stimulus-rails", ">= 1.1"
 
   spec.add_development_dependency "mocha"
   spec.add_development_dependency "solargraph-rails"

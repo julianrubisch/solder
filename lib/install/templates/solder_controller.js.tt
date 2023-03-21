@@ -1,0 +1,41 @@
+import { Controller } from '@hotwired/stimulus'
+import { get, patch } from '@rails/request.js'
+
+export default class extends Controller {
+  static values = {
+    key: String
+  }
+
+  async connect () {
+    this.mutationObserver = new MutationObserver(this.mutateState.bind(this))
+
+    this.mutationObserver.observe(this.element, { attributes: true })
+  }
+
+  disconnect () {
+    this.mutationObserver?.disconnect()
+  }
+
+  mutateState (mutationList, observer) {
+    mutationList
+      .filter(mutation => mutation.attributeName !== 'data-solder-touch')
+      .forEach(async mutation => {
+        const body = new FormData()
+
+        const attributes = {}
+        this.element
+          .getAttributeNames()
+          .filter(name => name !== 'data-controller')
+          .map(name => {
+            attributes[name] = this.element.getAttribute(name)
+          })
+
+        body.append('key', this.keyValue)
+        body.append('attributes', JSON.stringify(attributes))
+
+        await patch('/solder/ui_state/update', {
+          body
+        })
+      })
+  }
+}
