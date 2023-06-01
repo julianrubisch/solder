@@ -21,7 +21,8 @@ Typically, you have a few options to achieve this:
 - ActiveRecord,
 - the `session`,
 - [Kredis](https://github.com/rails/kredis)
-are the most frequent ones. It requires you to invent keys to access the state of UI elements, e.g. `session[:collapsed_categories]` etc.
+
+These are the most frequently chosen solutions. It requires you to invent keys to access the state of UI elements, e.g. `session[:collapsed_categories]` etc.
 Experience shows that the management of those keys tends to increase complexity.
 
 Hence, the part that this gem takes care of is the automatic generation and management of those keys.
